@@ -68,7 +68,7 @@ app.post('/api/users', (req, res) => {
     }, function (err, docs) {
         if (docs.length != 0) {
             res.status(400);
-            res.send('Email ya registrado');
+            res.send('Email ya existe');
             return;
         }
         let hash = bcrypt.hashSync(req.body.pass, 10);

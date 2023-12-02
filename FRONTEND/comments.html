@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Rate professors - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3" style="text-align: left;">Rate professors</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Profesores</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text"  id="search" class="form-control bg-light border-0 small" placeholder="Buscar profesor..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Estudiante</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" onclick="salir()" href="#">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Salir
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h2 class="m-0 font-weight-bold text-primary" id="titleText">Profesores</h2>
+                            <a class="btn btn-primary" data-toggle="modal" data-target="#modalCrearComment">Crear comentario</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Comentario</th>
+                                            <th>Calificación obtenida</th>
+                                            <th>Calificación del profesor</th>
+                                            <th>Dificultad</th>
+                                            <th>Nombra asistencia</th>
+                                            <th>Pide libros</th>
+                                            <th>Retomaria la materia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bodytable">
+                                        <tr>
+                                            <td>Donna Snider</td>
+                                            <td>Customer Support</td>
+                                            <td>New York</td>
+                                            <td>27</td>
+                                            <td>2011/01/25</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Rate professors - 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Modal crear profesor -->
+    <div class="modal" style="font-family: 'Poppins',sans-serif;" id="modalCrearComment" tabindex="-1" role="dialog" aria-labelledby="modalLoginLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div style="padding: 1em" class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalLoginlLabel">
+                        Registro de <b>comentario</b>
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="comments">
+                                <h6><b> Comentarios: </b></h6>
+                            </label>
+                            <textarea class="form-control" id="comments" placeholder="Ingrese su comentario"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="calificacionObtenida">
+                                <h6><b> Calificación obtenida: </b></h6>
+                            </label>
+                            <input type="number" class="form-control" id="calificacionObtenida" min="5" max="10" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="calificacion">
+                                <h6><b> Calificación del profesor: </b></h6>
+                            </label>
+                            <input type="number" class="form-control" id="calificacion" min="5" max="10" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dificultad">
+                                <h6><b> Dificultad: </b></h6>
+                            </label>
+                            <input type="number" class="form-control" id="dificultad" min="1" max="5" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="asistencia">
+                                <h6><b> Nombra asistencia: </b></h6>
+                            </label>
+                            <select class="form-select" id="asistencia" required>
+                                <option value="" selected disabled hidden>Seleccionar opción</option>
+                                <option value="true">Sí</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="libros">
+                                <h6><b> Pide libros: </b></h6>
+                            </label>
+                            <select class="form-select" id="libros" required>
+                                <option value="" selected disabled hidden>Seleccionar opción</option>
+                                <option value="true">Sí</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="retomaria">
+                                <h6><b> Retomaria la materia: </b></h6>
+                            </label>
+                            <select class="form-select" id="retomaria" required>
+                                <option value="" selected disabled hidden>Seleccionar opción</option>
+                                <option value="true">Sí</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+
+                        <button id="savepro" onclick="registerComment()" style="background: #036" type="button" class="btn btn-primary">
+                            Guardar
+                        </button>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+    <script>
+        //var comentarios = [];
+        let token = localStorage.getItem('token');
+        let urlParams = new URLSearchParams(window.location.search), pid = urlParams.get('pid');
+
+        if(token == null){
+            window.location.href = 'login.html';
+        }
+
+        function GetCommentsData() {
+            let url = "http://localhost:3000/api/professors?pid=" + pid;
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.send();
+            xhr.onload = function () {
+                if (xhr.status != 200) {
+                    alert(xhr.status + ': ' + xhr.statusText);
+                }
+                else {
+                    document.getElementById('titleText').replaceChildren();
+
+                    let profesor = JSON.parse(xhr.response);
+                    let text = `${profesor[0].nombre} ${profesor[0].apellido}`;
+
+                    document.getElementById('titleText').innerHTML += text;
+
+                    url = "http://localhost:3000/api/comment?pid=" + pid;
+
+                    xhr = new XMLHttpRequest();
+                    xhr.open('GET', url);
+                    xhr.send();
+                    xhr.onload = function () {
+                        if (xhr.status != 200) {
+                            alert(xhr.status + ': ' + xhr.statusText);
+                        }
+                        else {
+                            let comentarios = JSON.parse(xhr.response)
+                            document.getElementById('bodytable').replaceChildren();
+                            for(let i = 0; i < comentarios.length; i++) {
+                                let text = "<tr>";
+                                let fecha = `${comentarios[i].fecha}`;
+                                text += `<td>${fecha}</td>`;
+                                let comentario = `${comentarios[i].comentario}`;
+                                text += `<td>${comentario}</td>`
+                                let calificacionObtenida = `${comentarios[i].calificacionObtenida}`;
+                                text += `<td>${calificacionObtenida}</td>`
+                                let calificacion = `${comentarios[i].calificacion}`;
+                                text += `<td>${calificacion}</td>`
+                                let dificultad = `${comentarios[i].dificultad}`;
+                                text += `<td>${dificultad}</td>`
+
+                                if(comentarios[i].asistencia == true){
+                                    text += `<td>Si</td>`
+                                }
+                                else {
+                                    text += `<td>No</td>`
+                                }
+                                if(comentarios[i].libros == true){
+                                    text += `<td>Si</td>`
+                                }
+                                else {
+                                    text += `<td>No</td>`
+                                }
+                                if(comentarios[i].retomar == true){
+                                    text += `<td>Si</td>`
+                                }
+                                else {
+                                    text += `<td>No</td>`
+                                }
+                                text += "</tr>";
+                                document.getElementById('bodytable').innerHTML += text;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        GetCommentsData()
+
+        /*function comments(){
+            let url = "http://localhost:3000/api/comment?pid=";
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET',url);
+
+            xhr.send();
+            xhr.onload = function () {
+                if (xhr.status != 200 && xhr.status != 201) { 
+                    alert(xhr.status + ': ' + xhr.statusText);
+                } 
+                else {
+                    let data = JSON.parse(xhr.responseText);
+                    comentarios = data;
+                }
+        
+            };
+        }
+
+        comments();
+
+        function proffesorsList(){
+            let url = "http://localhost:3000/api/professors?nombre="
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET',url);
+
+            xhr.send();
+            xhr.onload = function () {
+                if (xhr.status != 200 && xhr.status != 201) { 
+                    alert(xhr.status + ': ' + xhr.statusText);
+                } 
+                else {
+                    search = document.getElementById('search').value;
+                    let data = JSON.parse(xhr.responseText);
+                    if(data != null){
+                        document.getElementById('bodytable').replaceChildren();
+                
+                        if(data.length == 0){
+                            let text = "<tr><td colspan='5' style='text-align: center;'>No se encontraron profesores<td><tr>";
+                            document.getElementById('bodytable').append(text);
+                            return;
+                        }
+
+                        for(let i = 0; i < data.length; i++) {
+                            let text = "<tr>";
+                            let nombre = `${data[i].nombre} ${data[i].apellido}`;
+                            text += `<td>${nombre}</td>`;
+                            let departamento = `${data[i].departamento}`;
+                            text += `<td>${departamento}</td>`;
+
+                            let promedioGrupo = 0.0;
+                            let rating = 0.0;
+                            let nivelDificultad = 0.0;    
+
+                            let division = 0;
+                            for(let j = 0; j < comentarios.length; j++){
+                                if(comentarios[j].pid == data[i]._id){
+                                    promedioGrupo += comentarios[j].calificacionObtenida;
+                                    rating += comentarios[j].calificacion;
+                                    nivelDificultad += comentarios[j].dificultad;
+                                    division++;
+                                }
+                            }
+
+                            if(division > 0){
+                                promedioGrupo = promedioGrupo/division;
+                                rating = rating/division;
+                                nivelDificultad = nivelDificultad/division;
+                            }
+                            
+                            let url = "comments.html?pid="+data[i]._id;
+
+                            text += `<td>${promedioGrupo}</td>`;
+                            text += `<td>${nivelDificultad}</td>`;
+                            text += `<td>${rating}</td>`;
+                            text += `<td><a href='${url}' class="btn btn-primary">Comentarios</a></td>`;
+                            text += "</tr>";
+                            document.getElementById('bodytable').innerHTML += text;
+                        }
+                    }
+                }
+            };
+        }
+
+        proffesorsList()*/
+
+        function registerComment(){
+
+            let calificacion = document.getElementById("calificacion").value
+            let dificultad = document.getElementById("dificultad").value
+            let retomar = document.getElementById("retomaria").value
+            let libros = document.getElementById("libros").value
+            let asistencia = document.getElementById("asistencia").value
+            let calificacionObtenida = document.getElementById("calificacionObtenida").value
+            let comentario = document.getElementById("comments").value
+
+            if(calificacion == '' || dificultad == '' || retomar == '' || libros == '' || asistencia == '' || calificacionObtenida == '' || comentario == '') {
+                alert('Se necesitan todos los datos');
+            } 
+            else {
+                let body = {
+                    'calificacion': calificacion,
+                    'dificultad': dificultad,
+                    'retomar': retomar,
+                    'libros': libros,
+                    'asistencia': asistencia,
+                    'calificacionObtenida': calificacionObtenida,
+                    'comentario': comentario,
+                    'pid': pid
+                }
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://localhost:3000/api/postComment");
+  
+                xhr.setRequestHeader("content-Type", "application/json");
+                xhr.setRequestHeader("x-user-token", token);
+  
+                xhr.send(JSON.stringify(body));
+            
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        alert("Comentario registrado exitosamente");
+                        window.location.href = 'comments.html?pid=' + pid;
+                    } else {
+                        alert("Error: " + xhr.response);
+                    }
+                };
+            }
+        }
+
+        function salir() {
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        }
+    </script>
+
+</body>
+
+</html>

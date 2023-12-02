@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.1",
+    "chalk": "^5.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^6.12.3",
+    "path": "^0.12.7",
+    "randomatic": "^3.1.1",
+    "start": "^5.1.0",
+    "url": "^0.11.0"
+  },
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
